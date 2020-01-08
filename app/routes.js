@@ -12,7 +12,23 @@ router.get('/',function(request,response){
 })
 
 router.post('/create',function(request,response){
-    response.send('Categoria creada')
+    model.insert(request.body,function(err,res){
+        response.send({
+            'error': false,
+            'body':res
+        })
+    })
+})
+
+router.post('/update/:id',function(request,response){
+    var id = request.params.id
+    var obj = request.body
+    model.update(id,obj,function(err,res){
+        response.send({
+            'error': false,
+            'body':res
+        })
+    })
 })
 
 // :id representa el valor del parametro enviado 
@@ -27,9 +43,13 @@ router.get('/show/:id',function(request,response){
 })
 
 router.delete('/delete/:id',function(request,response){
-    var req = request.params
-    console.log(req)
-    response.send('Categoria Eliminada')
+    var id = request.params.id
+    model.remove(id,function(err,res){
+        response.send({
+            'error': false,
+            'body':res
+        })
+    })
 })
 
 module.exports = router

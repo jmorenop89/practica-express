@@ -5,13 +5,15 @@ const sql = require('./db')
     }
 */
 function list(result){
-    sql.query('select * from category',function(error,response){
-        if(error){
-            result(error,null)
-        }else{
-            result(null,response)
-        }
-    })
+    sql.query('select * from category',result)
+}
+
+function insert(obj, result){
+    sql.query('insert into category set ?',obj,result)
+}
+
+function update(id,obj,result){
+    sql.query('update category set name = ?, slug = ? where id = ?',[obj.name,obj.slug,id],result)
 }
 
 function show(id,result){
@@ -19,6 +21,10 @@ function show(id,result){
     sql.query('select * from category where id=?',id,result)
 }
 
+function remove(id,result){
+    sql.query('delete from category where id = ?',id,result)
+}
+
 module.exports = {
-    list,show
+    list,show,insert,update,remove
 }
