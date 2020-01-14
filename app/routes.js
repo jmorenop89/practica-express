@@ -12,6 +12,7 @@ router.get('/',function(request,response){
 })
 
 router.post('/create',function(request,response){
+    console.log(request.body)
     model.insert(request.body,function(err,res){
         response.send({
             'error': false,

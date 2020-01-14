@@ -1,10 +1,12 @@
 const sql = require('./db')
 /*
     result => (err,res){
-
+        err => excepción (error)
+        res => resultado
     }
 */
 function list(result){
+    // sql.query(sentencia_sql,callback)
     sql.query('select * from category',result)
 }
 
