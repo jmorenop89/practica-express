@@ -1,4 +1,4 @@
-const sql = require('./db')
+const sql = require('../db')
 /*
     result => (err,res){
         err => excepción (error)

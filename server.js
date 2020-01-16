@@ -1,12 +1,17 @@
 const express = require('express')
-const router = require('./app/routes')
+const router = require('./app/category/routes')
+const prod = require('./app/product/routes')
+// npm i body-parser
 const bodyParser = require('body-parser')
 // llamando módulo
 var app = express()
+// para obtener los valores enviados mediante body
 app.use(bodyParser.json()) // => tipo de dato json
 app.use(bodyParser.urlencoded({extended:true})) // => tipo de datos urlencoded
 
 app.use('/category',router)
+console.log(prod)
+app.use('/product',prod)
 
 app.listen(3000)
 
