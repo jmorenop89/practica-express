@@ -1,6 +1,6 @@
 const express = require('express')
-const router = require('./app/category/routes')
-const prod = require('./app/product/routes')
+const rt_cat = require('./app/category/routes')
+const rt_pro = require('./app/product/routes')
 // npm i body-parser
 const bodyParser = require('body-parser')
 // llamando módulo
@@ -9,9 +9,8 @@ var app = express()
 app.use(bodyParser.json()) // => tipo de dato json
 app.use(bodyParser.urlencoded({extended:true})) // => tipo de datos urlencoded
 
-app.use('/category',router)
-console.log(prod)
-app.use('/product',prod)
+app.use('/category',rt_cat)
+app.use('/product',rt_pro)
 
 app.listen(3000)
 

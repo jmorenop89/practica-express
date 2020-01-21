@@ -1,12 +1,8 @@
 const express = require('express')
 const router = express.Router()
+const controller = require('./controller')
 
-router.get('/',function(request,response){
-    response.send('Lista de productos')
-})
-
-router.post('/create',function(request,response){
-    response.send('crear un nuevo producto')
-})
+router.get('/',controller.All)
+router.post('/create',controller.Create)
 
 module.exports = router
